@@ -2,13 +2,14 @@ const gulp = require('gulp')
 const gutil = require('gulp-util')
 const pug = require('gulp-pug')
 const file = require('gulp-file')
+const ts = require('gulp-typescript')
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
+
 const webpackConfigDev = require('./config/webpack.config.dev')
 const webpackConfigProd = require('./config/webpack.config.prod')
-
-
 const manifest = require('./config/manifest')
+const tsProject = ts.createProject('./config/sw.tsconfig.json')
 
 const BUILD_PATH = './build'
 const SRC_PATH = './src'
@@ -41,6 +42,16 @@ gulp.task('webpack', cb => {
   })
 })
 
+gulp.task('sw', () => {
+  return tsProject.src()
+    .pipe(ts(tsProject))
+    .js
+    .pipe(gulp.dest('./build'))
+})
+
+gulp.task('watch:sw', ['sw'], () => {
+  gulp.watch('./src/sw.ts', ['sw'])
+})
 
 gulp.task('serve', () => {
   const compiler = webpack(webpackConfigDev)
@@ -58,3 +69,5 @@ gulp.task('serve', () => {
     gutil.log('[webpack-dev-server]', 'http://localhost:8080')
   })
 })
+
+gulp.task('default', ['pug', 'assets', 'manifest', 'serve'])

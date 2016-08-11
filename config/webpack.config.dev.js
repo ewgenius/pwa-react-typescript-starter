@@ -1,11 +1,13 @@
 const path = require('path')
 const webpack = require('webpack')
 const loaders = require('./loaders')
+const vendor = require('./vendor')
 
 module.exports = {
   entry: {
     app: ['./src/app.tsx'],
-    vendor: []
+    sw: ['./src/sw.ts'],
+    vendor
   },
   output: {
     filename: '[name].bundle.js',

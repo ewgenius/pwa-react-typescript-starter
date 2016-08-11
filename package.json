@@ -27,6 +27,7 @@
     "gulp": "^3.9.1",
     "gulp-file": "^0.3.0",
     "gulp-pug": "^3.0.4",
+    "gulp-typescript": "^2.13.6",
     "gutil": "^1.6.4",
     "node-sass": "^3.8.0",
     "sass-loader": "^4.0.0",
@@ -38,7 +39,9 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "material-ui": "^0.15.4",
     "react": "^15.3.0",
-    "react-dom": "^15.3.0"
+    "react-dom": "^15.3.0",
+    "react-tap-event-plugin": "^1.0.0"
   }
 }
