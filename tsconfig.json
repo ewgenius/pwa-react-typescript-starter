@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es5",
     "module": "commonjs",
     "outDir": ".tmp",
     "jsx": "react"
-  }
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }
