@@ -6,7 +6,6 @@ const vendor = require('./vendor')
 module.exports = {
   entry: {
     app: ['./src/app.tsx'],
-    sw: ['./src/sw.ts'],
     vendor
   },
   output: {

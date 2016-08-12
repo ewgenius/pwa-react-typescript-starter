@@ -13,9 +13,9 @@ import Layout from './components/Layout/Layout.tsx'
 
 configure()
 
-if('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator) {
   navigator['serviceWorker']
-    .register('/sw.bundle.js')
+    .register('/sw.js')
     .then(() => console.log('Service Worker Registered'))
 }
 
@@ -29,10 +29,10 @@ class App extends Component<{}, {}> {
         <div className='content'>
           <RaisedButton label='test'/>
           <Layout flow='row'>
-            <div style={{flex: 1}}>test</div>
-            <div style={{flex: 1}}>test</div>
-            <div style={{flex: 1}}>test</div>
-            <div style={{flex: 1}}>test</div>
+            <div style={{ flex: 1 }}>test</div>
+            <div style={{ flex: 1 }}>test</div>
+            <div style={{ flex: 1 }}>test</div>
+            <div style={{ flex: 1 }}>test</div>
           </Layout>
         </div>
       </Layout>
