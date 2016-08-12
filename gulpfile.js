@@ -17,7 +17,8 @@ gulp.task('pug', () => {
   return gulp.src(`${SRC_PATH}/index.pug`)
     .pipe(pug({
       locals: {
-        title: manifest.name
+        title: manifest.name,
+        theme_color: manifest.theme_color
       }
     }))
     .pipe(gulp.dest(BUILD_PATH))
