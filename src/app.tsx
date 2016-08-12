@@ -7,8 +7,9 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar'
 import FlatButton from 'material-ui/FlatButton'
 import RaisedButton from 'material-ui/RaisedButton'
-
 import './styles/main.scss'
+
+import Layout from './components/Layout/Layout.tsx'
 
 configure()
 
@@ -23,12 +24,18 @@ const theme = getMuiTheme()
 class App extends Component<{}, {}> {
   render() {
     return <MuiThemeProvider muiTheme={theme}>
-      <div>
+      <Layout flow='column'>
         <AppBar />
         <div className='content'>
           <RaisedButton label='test'/>
+          <Layout flow='row'>
+            <div style={{flex: 1}}>test</div>
+            <div style={{flex: 1}}>test</div>
+            <div style={{flex: 1}}>test</div>
+            <div style={{flex: 1}}>test</div>
+          </Layout>
         </div>
-      </div>
+      </Layout>
     </MuiThemeProvider>
   }
 }

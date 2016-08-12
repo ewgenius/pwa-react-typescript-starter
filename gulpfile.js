@@ -9,7 +9,6 @@ const WebpackDevServer = require('webpack-dev-server')
 const webpackConfigDev = require('./config/webpack.config.dev')
 const webpackConfigProd = require('./config/webpack.config.prod')
 const manifest = require('./config/manifest')
-const tsProject = ts.createProject('./config/sw.tsconfig.json')
 
 const BUILD_PATH = './build'
 const SRC_PATH = './src'
@@ -26,12 +25,12 @@ gulp.task('pug', () => {
 
 gulp.task('manifest', () => {
   return file('manifest.json', JSON.stringify(manifest, null, 2))
-    .pipe(gulp.dest('./build'))
+    .pipe(gulp.dest(BUILD_PATH))
 })
 
 gulp.task('assets', () => {
   return gulp.src('./assets/icons/**/*')
-    .pipe(gulp.dest('./build/assets/icons'))
+    .pipe(gulp.dest(`${BUILD_PATH}/assets/icons`))
 })
 
 gulp.task('webpack', cb => {
@@ -42,22 +41,11 @@ gulp.task('webpack', cb => {
   })
 })
 
-gulp.task('sw', () => {
-  return tsProject.src()
-    .pipe(ts(tsProject))
-    .js
-    .pipe(gulp.dest('./build'))
-})
-
-gulp.task('watch:sw', ['sw'], () => {
-  gulp.watch('./src/sw.ts', ['sw'])
-})
-
 gulp.task('serve', () => {
   const compiler = webpack(webpackConfigDev)
 
   const server = new WebpackDevServer(compiler, {
-    contentBase: './build',
+    contentBase: BUILD_PATH,
     hot: true,
     stats: {
       colors: true

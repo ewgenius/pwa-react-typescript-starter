@@ -1,8 +1,0 @@
-{
-  "files": [
-    "../src/sw.ts"
-  ],
-  "compilerOptions": {
-    "target": "es5"
-  }
-}
